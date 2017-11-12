@@ -34,7 +34,7 @@ function createMap( Map, Graphic, SimpleMarkerSymbol, SimpleLineSymbol, Color ){
 
 	function drawSymbol(e){
 		var point = e.mapPoint
-		,size		= 24
+		,size		= 3 + Math.random() * 24
 		,lineColor	= new Color([255,0,0])
 		,fillColor	= new Color([255,255,0,0.5])
 		,outline	= new SimpleLineSymbol( SimpleLineSymbol.STYLE_SOLID, lineColor, 3 )
