@@ -10,6 +10,7 @@
  ***********************/
 
 .map{
+	border: 2px outset silver;
 	width: 99%; height: 99%;
 }
 nav{
