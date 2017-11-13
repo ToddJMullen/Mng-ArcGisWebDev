@@ -9,6 +9,9 @@
 	<body>
 		<select id="selPopulation" name="population">
 			<option value="" selected="selected" >Select Population</option>
+			<option value="100">100</option>
+			<option value="500">500</option>
+			<option value="1500">1,500</option>
 			<option value="2500">2,500</option>
 			<option value="5000">5,000</option>
 			<option value="7500">7,500</option>
