@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>ArcGIS Web Development</title>
+		<title>ArcGIS Web Development | The Query Task</title>
 		<link rel="stylesheet"
 			  href="http://js.arcgis.com/3.11/esri/css/esri.css">
     <link href="/css/app.css" rel="stylesheet">
@@ -16,11 +16,12 @@
 			<option value="5000">5,000</option>
 			<option value="7500">7,500</option>
 		</select>
+		<h1>The Query Task</h1>
 
 		<div id="divMap" class=".map"></div>
 
 		<script src="http://js.arcgis.com/3.11/"></script>
-		<script type="text/javascript" src="./theQueryTask.js"></script>
+		<script src="js/theQueryTask.js" type="text/javascript"></script>
 
 
 	</body>
