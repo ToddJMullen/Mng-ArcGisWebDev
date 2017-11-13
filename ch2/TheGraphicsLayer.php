@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<title>ArcGIS Web Development | The Graphics Layer</title>
-		<link href="http://js.arcgis.com/3.11/esri/css/esri.css" rel="stylesheet">
-		<link href="/ArcGisWebDev/css/app.css" rel="stylesheet">
+		<?php require_once '../headContent.php'; ?>
 	</head>
 	<body>
 		<h1>The Graphics Layer</h1>
+		<?php require_once '../menu.php'; ?>
 		<div id="divMap" class="map"></div>
 
 		<script src="http://js.arcgis.com/3.11/"></script>

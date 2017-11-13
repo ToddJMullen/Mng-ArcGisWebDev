@@ -2,11 +2,19 @@
 <html>
 	<head>
 		<title>ArcGIS Web Development | The Query Task</title>
-		<link rel="stylesheet"
-			  href="http://js.arcgis.com/3.11/esri/css/esri.css">
-    <link href="/css/app.css" rel="stylesheet">
+		<?php require_once '../headContent.php'; ?>
+		<style>
+			#selPopulation{
+				clear: left;
+				margin: 10px;
+				display: block;
+			}
+		</style>
 	</head>
 	<body>
+		<h1>The Query Task</h1>
+		<?php require_once '../menu.php'; ?>
+
 		<select id="selPopulation" name="population">
 			<option value="" selected="selected" >Select Population</option>
 			<option value="100">100</option>
@@ -16,7 +24,6 @@
 			<option value="5000">5,000</option>
 			<option value="7500">7,500</option>
 		</select>
-		<h1>The Query Task</h1>
 
 		<div id="divMap" class=".map"></div>
 

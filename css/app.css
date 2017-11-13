@@ -12,4 +12,36 @@
 .map{
 	width: 99%; height: 99%;
 }
+nav{
+	display: block;
+	clear: both;
+	cursor: pointer;
+}
+nav a{
+	text-decoration: none;
+/*	border-bottom: 1px aqua inset;
+	border-right: 2px aqua inset;*/
+	padding: 5px;
+	padding-top: 7px;
+}
+ul, li{
+	list-style: none;
+	list-style-position: outside;
+	padding-left: 0;
+}
+nav > ul > li{
+	display: inline-block;
+	float: left;
+	border: 2px outset skyblue;
+	padding: 5px;
+}
+nav ul > li ul{
+	display: none;
+}
+nav ul>li:hover ul{
+	display: block;
+	float: left;
+}
+nav ul>li:hover ul li{
 
+}
