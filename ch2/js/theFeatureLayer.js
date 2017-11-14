@@ -57,7 +57,7 @@ function buildFeatureLayerMap(
 	function filterFeatureLayerWithDefExpr(e){
 		console.log("filterFeatureLayer()");
 
-		var pop		= e.target.valueOf()
+		var pop		= e.target.value
 		,filterExpr	= "TOTAL_POP > " + pop;
 		featureLayer.setDefinitionExpression( filterExpr );
 

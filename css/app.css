@@ -35,14 +35,18 @@ nav > ul > li{
 	float: left;
 	border: 2px outset skyblue;
 	padding: 5px;
+	width: 40px;
 }
 nav ul > li ul{
 	display: none;
 }
 nav ul>li:hover ul{
 	display: block;
-	float: left;
+    position: relative;
+    overflow: visible;
+    background-color: #efc;
+	width: 150px;
 }
 nav ul>li:hover ul li{
-
+	padding: 5px;
 }

@@ -33,7 +33,7 @@ $chAry = [
 		<?php
 		$menu = "";
 		foreach ( $chAry as $k => $ch ){
-			$menu .= "<li class='ch'>$ch->label<br /><ul>";
+			$menu .= "<li class='ch'>$ch->label<ul>";
 			foreach( $ch->pageAry as $k => $page ){
 				$menu .= "<li>{$page->getLink()}</li>";
 			}
