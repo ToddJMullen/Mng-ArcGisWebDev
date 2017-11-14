@@ -38,7 +38,7 @@ class Page
 	 * @return void
 	 * @access public
 	 */
-	public function __construct( $path, $label, $title )
+	public function __construct( $path, $label, $title = "" )
 	{
 		$this->path		= $path;
 		$this->label	= $label;
@@ -48,7 +48,7 @@ class Page
 	public function getLink(){
 		$title = $this->title ? $this->title : "";
 		$label = "title='" . $this->label ? $this->label : $this->path . "'";
-		return "<a href='$path' $title>$label</a>";
+		return "<a href='$this->path' $title>$label</a>";
 	}
 
 
