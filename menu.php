@@ -14,14 +14,18 @@ use imagi\models\Chapter;
 use imagi\models\Page;
 
 $chAry = [
-	new Chapter("Ch2", [
-			new Page("/ch2/TheGraphicsLayer.php", "The Graphics Layer")
-			,new Page("/ch2/TheQueryTask.php", "The Query Task")
-			,new Page("/ch2/TheFeatureLayer.php", "The Feature Layer")
+	new Chapter("Home", [new Page("/index.php", "Home")])
+	,new Chapter("Chapter 2", [
+			new Page("/chapter2/TheGraphicsLayer.php", "The Graphics Layer")
+			,new Page("/chapter2/TheQueryTask.php", "The Query Task")
+			,new Page("/chapter2/TheFeatureLayer.php", "The Feature Layer")
 		]
 	)
-	,new Chapter("Ch3", [
-		new Page("/ch3/ch3.1.php", "Something", "Blah...")
+	,new Chapter("Chapter 3", [
+		new Page("/chapter3/ch3.1.php", "REST API Stuff")
+	])
+	,new Chapter("Chapter 4", [
+		new Page("/chapter4/sdf.php","Somthing")
 	])
 ];
 
