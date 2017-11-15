@@ -1,0 +1,52 @@
+/***********************
+ *	Imaginus.org ©2017
+ *
+ *	Project		: ArcGisWebDev
+ *	Author		: Todd Mullen
+ *	Document	: app.css
+ *	Created		: Nov 11, 2017, 9:00:28 PM
+ *	Description	:
+ *		Styles for
+ ***********************/
+
+.map{
+	border: 2px outset silver;
+	width: 99%; height: 99%;
+}
+nav{
+	display: block;
+	clear: both;
+	cursor: pointer;
+}
+nav a{
+	text-decoration: none;
+/*	border-bottom: 1px aqua inset;
+	border-right: 2px aqua inset;*/
+	padding: 5px;
+	padding-top: 7px;
+}
+ul, li{
+	list-style: none;
+	list-style-position: outside;
+	padding-left: 0;
+}
+nav > ul > li{
+	display: inline-block;
+	float: left;
+	border: 2px outset skyblue;
+	padding: 5px;
+	width: 40px;
+}
+nav ul > li ul{
+	display: none;
+}
+nav ul>li:hover ul{
+	display: block;
+    position: relative;
+    overflow: visible;
+    background-color: #efc;
+	width: 150px;
+}
+nav ul>li:hover ul li{
+	padding: 5px;
+}
