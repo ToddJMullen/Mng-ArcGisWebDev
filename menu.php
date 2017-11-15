@@ -21,8 +21,7 @@ $chAry = [
 		]
 	)
 	,new Chapter("Ch3", [
-		new Page("/ch3/somthing.php", "sd", "sdf")
-		,new Page("/ch3/somthing.php", "sd", "sdf")
+		new Page("/ch3/ch3.1.php", "Something", "Blah...")
 	])
 ];
 
