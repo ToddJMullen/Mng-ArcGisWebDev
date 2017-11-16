@@ -7,8 +7,19 @@
  *      Controls
  ***********************/
 
-/* global  */
-
+require([
+	"controllers/appcontroller"
+	,"dojo/domReady!"
+], function initApp(appCtrl){//on domReady, receives appcontroller as appCtrl
+	appCtrl.init({
+		elem: "divMap"
+		,mapOptions: {
+			basemap: "gray"
+			,center: [-118.241,34.0542]
+			,zoom: 12
+		}
+	});
+});
 
 
 
