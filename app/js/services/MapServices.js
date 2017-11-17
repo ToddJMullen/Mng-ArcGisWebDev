@@ -10,7 +10,7 @@
 define([
 	"esri/layers/FeatureLayer"
 ], function(FeatureLayer){
-	
+
 	return {
 		loadServices: loadServices
 	};
@@ -21,8 +21,8 @@ define([
 		;
 		censusLayer = new FeatureLayer(
 			"http://services.arcgis.com/V6ZHFr6zdgNZuVG0/"
-			+ "arcgic/rest/services/"
-			+ "CensusLabeorDemo/FeatureService/1"
+			+ "arcgis/rest/services/"
+			+ "CensusLaborDemo/FeatureServer/1"
 		);
 
 		layers.push( censusLayer );
