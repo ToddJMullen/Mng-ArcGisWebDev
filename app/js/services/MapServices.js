@@ -9,21 +9,26 @@
 
 define([
 	"esri/layers/FeatureLayer"
-], function(FeatureLayer){
+	,"esri/renderers/SimpleRenderer"
+	,"utils/symbolUtil"
+], function( FeatureLayer, SimpleRenderer, symbolUtil ){
 
 	return {
 		loadServices: loadServices
 	};
 
-	function loadServices(){
+	function loadServices( config ){
 		var layers = []
 		,censusLayer
+		,renderer
 		;
 		censusLayer = new FeatureLayer(
 			"http://services.arcgis.com/V6ZHFr6zdgNZuVG0/"
 			+ "arcgis/rest/services/"
 			+ "CensusLaborDemo/FeatureServer/1"
 		);
+		renderer	= new SimpleRenderer( symbolUtil.renderSymbol() );
+		censusLayer.setRenderer( renderer );
 
 		layers.push( censusLayer );
 		return layers;
