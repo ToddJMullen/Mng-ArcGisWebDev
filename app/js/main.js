@@ -9,8 +9,9 @@
 
 require([
 	"controllers/AppController"
+	,"services/MapServices"
 	,"dojo/domReady!"
-], function initApp(appCtrl){//on domReady, receives appcontroller as appCtrl
+], function initApp( appCtrl, mapServices ){//on domReady, receives appcontroller as appCtrl
 	appCtrl.init({
 		elem: "divMap"
 		,mapOptions: {
@@ -18,6 +19,7 @@ require([
 			,center: [-118.241,34.0542]
 			,zoom: 12
 		}
+		,layers: mapServices.loadServices()
 	});
 });
 
