@@ -9,9 +9,13 @@
 
 define([
 	"controllers/MapController"
-], function( MapController ){
+	,"widgets/edit/editTools"
+], function( MapController, EditTools ){
 	function mapLoaded(map){
 		console.debug("Map loaded: ", map );
+		var editTools = new EditTools({
+			map: map
+		}, "divMapTools");
 	}
 	function init(config){
 		var mapCtrl = new MapController(config);
