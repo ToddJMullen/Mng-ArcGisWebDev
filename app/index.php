@@ -9,7 +9,7 @@
 	<body class="app">
 
 		<div id="divMap"></div>
-		<div id="sivMapTools"></div>
+		<div id="divMapTools"></div>
 
 	</body>
 </html>
