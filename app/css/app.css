@@ -18,3 +18,8 @@
 	max-width: 100%;
 }
 
+#divMapTools{
+	position: absolute;
+	top: 1em; right: 1em;
+}
+
