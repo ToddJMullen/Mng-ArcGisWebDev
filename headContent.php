@@ -13,6 +13,6 @@
 ?>
 <link href="/css/bootstrap.min.css" rel="stylesheet">
 <link href="http://js.arcgis.com/3.11/esri/css/esri.css" rel="stylesheet">
-<link href="/css/app.css" rel="stylesheet">
+<link href="css/app.css" rel="stylesheet">
 
 
