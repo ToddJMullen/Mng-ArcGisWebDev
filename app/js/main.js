@@ -8,7 +8,7 @@
  ***********************/
 
 require([
-	"controllers/appcontroller"
+	"controllers/AppController"
 	,"dojo/domReady!"
 ], function initApp(appCtrl){//on domReady, receives appcontroller as appCtrl
 	appCtrl.init({
