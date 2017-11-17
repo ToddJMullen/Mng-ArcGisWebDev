@@ -14,7 +14,7 @@ define([
 	,"dijit/_WidgetBase"//Base for custom widgets
 	,"dijit/_TemplatedMixin"
 	,"dojo/dom-class"
-	,"text!widgets/edit/editTools.tpl.html"
+	,"text!widgets/edit/editTools.tmpl.html"
 ], function createEditToolsWidget(
 	declare, lang, on
 	,_WidgetBase, _TemplatedMixin
