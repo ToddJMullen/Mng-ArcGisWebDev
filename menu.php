@@ -15,6 +15,9 @@ use imagi\models\Page;
 
 $chAry = [
 	new Chapter("Home", [new Page("/index.php", "Home")])
+	,new Chapter("The App", [
+		new Page("/app/", "The App")
+	])
 	,new Chapter("Chapter 2", [
 			new Page("/chapter2/TheGraphicsLayer.php", "The Graphics Layer")
 			,new Page("/chapter2/TheQueryTask.php", "The Query Task")
