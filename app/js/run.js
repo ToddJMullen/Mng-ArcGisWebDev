@@ -14,7 +14,7 @@
 
 	var pathRegEx	= new RegExp(/\/[^\/]+$/)
 	//define var with adjusted location of app source files
-	,locationPath	= location.pathname.replace( pathRegEx, "" )
+	,locationPath	= location.pathname.replace( pathRegEx, "/" )
 	;
 
 	require({
