@@ -7,11 +7,15 @@
  *      Controls
  ***********************/
 
+/* global uris */
+
 define([
 	"esri/layers/FeatureLayer"
 	,"esri/renderers/SimpleRenderer"
 	,"utils/symbolUtil"
+	,"utils/uris"//imports the uris object
 ], function( FeatureLayer, SimpleRenderer, symbolUtil ){
+	console.log("MapServices()", uris );
 
 	return {
 		loadServices: loadServices
@@ -23,9 +27,10 @@ define([
 		,renderer
 		;
 		censusLayer = new FeatureLayer(
-			"http://services.arcgis.com/V6ZHFr6zdgNZuVG0/"
-			+ "arcgis/rest/services/"
-			+ "CensusLaborDemo/FeatureServer/1"
+//			"http://services.arcgis.com/V6ZHFr6zdgNZuVG0/"
+//			+ "arcgis/rest/services/"
+//			+ "CensusLaborDemo/FeatureServer/1"
+			uris.censusLayer()
 		);
 		renderer	= new SimpleRenderer( symbolUtil.renderSymbol() );
 		censusLayer.setRenderer( renderer );
