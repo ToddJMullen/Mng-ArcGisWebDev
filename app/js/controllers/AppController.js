@@ -9,6 +9,7 @@
 
 define([
 	"controllers/MapController"
+	,"esri/IdentityManager"
 ], function( MapController ){
 	function mapLoaded(map){
 		console.debug("Map loaded: ", map );
