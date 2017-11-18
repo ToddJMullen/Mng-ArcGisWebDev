@@ -53,10 +53,10 @@ define([
 
 			,_toggleEditButton: function(){
 				console.log("editTools::_toggleEditButton()");
-				if( this.editing ){
-					this.editNode.innerText = "Adding Request";
+				if( this._editing ){
+					this.editNode.innerHTML = "Adding Request";
 				} else {
-					this.editNode.innerText = "Add Request";
+					this.editNode.innerHTML = "Add Request";
 				}
 				domClass.toggle( this.editNode, "btn-primary btn-success" );
 			}//_toggleEditButton()
