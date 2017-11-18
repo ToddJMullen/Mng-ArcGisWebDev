@@ -18,24 +18,27 @@ define([
 	console.log("MapServices()", uris );
 
 	return {
-		loadServices: loadServices
+		loadServices: _loadServices
 	};
 
-	function loadServices( config ){
+	function _loadServices( config ){
 		var layers = []
-		,censusLayer
-		,renderer
+		,censusLayer = new FeatureLayer( uris.censusLayer(), {
+			id: "Census"
+		})
+		,requestLayer = new FeatureLayer( uris.requestLayer(), {
+			id: "Requests"
+			,mode: FeatureLayer.MODE_ONDEMAND
+			,outfields: ["*"]
+		})
+		,renderer = new SimpleRenderer( symbolUtil.renderSymbol() )
 		;
-		censusLayer = new FeatureLayer(
-//			"http://services.arcgis.com/V6ZHFr6zdgNZuVG0/"
-//			+ "arcgis/rest/services/"
-//			+ "CensusLaborDemo/FeatureServer/1"
-			uris.censusLayer()
-		);
-		renderer	= new SimpleRenderer( symbolUtil.renderSymbol() );
+
 		censusLayer.setRenderer( renderer );
 
 		layers.push( censusLayer );
+		layers.push( requestLayer );
+
 		return layers;
 	};
 
