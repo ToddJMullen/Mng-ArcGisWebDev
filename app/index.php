@@ -6,7 +6,7 @@
 		<script src="http://js.arcgis.com/3.11compact" type="text/javascript"></script>
 		<script src="js/run.js" type="text/javascript"></script>
 	</head>
-	<body class="app">
+	<body class="app nihilo">
 
 		<div id="divMap"></div>
 		<div id="divMapTools"></div>
