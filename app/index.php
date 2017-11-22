@@ -10,6 +10,8 @@
 
 		<div id="divMap"></div>
 		<div id="divMapTools"></div>
+		<!--<div id="divTemplate"></div>-->
+		<div id="template-div"></div>
 
 	</body>
 </html>

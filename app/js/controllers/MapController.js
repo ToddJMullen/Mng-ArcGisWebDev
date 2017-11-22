@@ -18,22 +18,28 @@ define([
 		map: null
 		,options: {}
 		,constructor: function( options ){
-			this.options = lang.mixin( this.options, options );
+			this.options = declare.safeMixin( this.options, options );
 		}
 		,load: function(){
 			var deferred = new Deferred()
 //			,mapLoaded = lang.hitch( this, function(){//the map services changes the event/method name that is fired when ready
-			,layersAdded = lang.hitch( this, function(){//mapLoaded() => layersAdded()
+			,layersAdded = lang.hitch( this, function( layers ){//mapLoaded() => layersAdded()
+				console.log("layersAdded(), this.map.graphicsLayerIds:", this.map.graphicsLayerIds );
 				deferred.resolve( this.map );
 			});
 
 			this.map = new Map( this.options.elem, this.options.mapOptions );
 
 //			on.once( this.map, 'load', mapLoaded );//event "load" changes also
-			on.once( this.map, 'layers-add-result', layersAdded );
+			on.once( this.map, 'layers-add-result', function onLayersAddResult( e ){
+				console.log("onLayersAddResult()", e );
+				setTimeout( layersAdded, 1000 );
+			});
 
 			//not we have a layer(s) to add
-			this.map.addLayers( this.options.layers );
+			setTimeout( function delayLayerAdd(){
+				this.map.addLayers( this.options.layers );
+			}, 1000 );
 
 			return deferred.promise;
 		}

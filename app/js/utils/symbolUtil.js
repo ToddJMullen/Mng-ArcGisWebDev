@@ -18,8 +18,8 @@ define([
 			return new SimpleFillSymbol(
 				SimpleFillSymbol.STYLE_SOLID
 				,new SimpleLineSymbol(
-					SimpleLineSymbol.STYLE_DASH
-					,new Color([55,155,205])
+					SimpleLineSymbol.STYLE_SOLID
+					,new Color([55,155,205], 1)
 					,1
 				)
 				,new Color([128,128,128,0.5])

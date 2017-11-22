@@ -22,4 +22,7 @@
 	position: absolute;
 	top: 1em; right: 1em;
 }
-
+#divTemplate{
+	position: absolute;
+	top: 50px; right: 5px;
+}

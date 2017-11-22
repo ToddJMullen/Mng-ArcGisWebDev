@@ -8,17 +8,56 @@
  ***********************/
 
 define([
-	"controllers/MapController"
+	"dojo/_base/array"
+	,"controllers/MapController"
+	,"widgets/edit/editTools"
+	,"esri/toolbars/edit"
+	,"esri/dijit/editing/Editor"
+	,"esri/dijit/editing/TemplatePicker"
+	//DON'T INJECT
+//	,"utils/uris"
 	,"esri/IdentityManager"
-], function( MapController ){
+], function( array, MapController
+				,EditTools, Edit, Editor
+				, TemplatePicker ){
+
 	function mapLoaded(map){
 		console.debug("Map loaded: ", map );
+		var requestLayer
+		,layerAry
+		,templatePicker
+		;
+
+		requestLayer	= map.getLayer( "Requests" )// uris.ID_LAYER_REQUESTS );
+
+		var layers = array.map( map.layerIds, function(layerId){
+			console.log("Layer ID:", layerId );
+			return map.getLayer( layerId );
+		})
+
+
+		if( layerAry ){
+			layerAry.push( requestLayer );
+		}
+
+		templatePicker = new TemplatePicker({
+			featureLayers: layerAry
+			,rows: "auto"
+			,columns: 1
+		}, "divTemplate" );
+		templatePicker.startup();
 
 	}
+
 	function init(config){
 		var mapCtrl = new MapController(config);
-		mapCtrl.load().then( mapLoaded );
+		mapCtrl.load().then( function( map ){
+//			setTimeout(
+				mapLoaded( map );
+//			, 1500 );
+		});
 	}
+
 	return {
 		init: init
 	};
