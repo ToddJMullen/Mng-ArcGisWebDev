@@ -1,64 +1,67 @@
 /*global define */
 /*jshint laxcomma: true*/
-define([
-  'dojo/_base/array',
-  'controllers/mapcontroller',
-  'widgets/edit/editTools',
-  'esri/toolbars/edit',
-  'esri/dijit/editing/Editor',
-  'esri/dijit/editing/TemplatePicker',
-  'esri/config',
-  'esri/IdentityManager'
-], function (array, MapController, EditTools, Edit, Editor, TemplatePicker, esriConfig) {
+define( [
+//  'dojo/_base/array',
+	'controllers/mapcontroller',
+	'widgets/edit/editTools',
+//  'esri/toolbars/edit',
+//  'esri/dijit/editing/Editor',
+//  'esri/dijit/editing/TemplatePicker',
+//  'esri/config',
+	'esri/IdentityManager'
+//], function (array, MapController, EditTools, Edit, Editor, TemplatePicker, esriConfig) {
+], function appInit(MapController, EditTools){
+	console.log( "appInit()" );
 
-  function mapLoaded(map) {
-    //var editTools = new EditTools({
-    //  map: map
-    //}, 'map-tools');
+	function mapLoaded(map){
+		var editTools = new EditTools( {
+			map: map
+		}, 'divMapTools' );
+	}
 
-    var requestLayer
-      , layers = []
-      , templatePicker;
+//    var requestLayer
+//      , layers = []
+//      , templatePicker;
+//
+//    requestLayer = map.getLayer('Requests');
+//
+//    layers.push(requestLayer);
+//
+//    templatePicker = new TemplatePicker({
+//      featureLayers: layers,
+//      rows: 'auto',
+//      columns: 1,
+//    }, "template-div");
+//
+//    templatePicker.startup();
+//
+//    var layerInfos = array.map(layers, function(layer) {
+//      return {
+//        featureLayer: layer
+//      };
+//    });
+//
+//    var settings = {
+//      map: map,
+//      templatePicker: templatePicker,
+//      layerInfos: layerInfos
+//    };
+//    var params = { settings: settings };
+//    var editorWidget = new Editor(params);
+//    editorWidget.startup();
+//  }
 
-    requestLayer = map.getLayer('Requests');
+	function _init(config){
 
-    layers.push(requestLayer);
+		//esriConfig.defaults.io.proxy = '/proxy/proxy/php';
 
-    templatePicker = new TemplatePicker({
-      featureLayers: layers,
-      rows: 'auto',
-      columns: 1,
-    }, "template-div");
+		var mapCtrl = new MapController( config );
 
-    templatePicker.startup();
+		mapCtrl.load().then( mapLoaded );
+	}
 
-    var layerInfos = array.map(layers, function(layer) {
-      return {
-        featureLayer: layer
-      };
-    });
+	return {
+		init: _init
+	};
 
-    var settings = {
-      map: map,
-      templatePicker: templatePicker,
-      layerInfos: layerInfos
-    };
-    var params = { settings: settings };
-    var editorWidget = new Editor(params);
-    editorWidget.startup();
-  }
-
-  function _init(config) {
-
-    //esriConfig.defaults.io.proxy = '/proxy/proxy/php';
-
-    var mapCtrl = new MapController(config);
-
-    mapCtrl.load().then(mapLoaded);
-  }
-
-  return {
-    init: _init
-  };
-
-});
+} );
