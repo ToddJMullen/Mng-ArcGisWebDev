@@ -57,4 +57,11 @@ nav ul>li:hover ul li{
 	position: absolute;
 	top: 10px; right: 10px; bottom: 10px; left: 10px;
 }
-
+#divMapTools{
+	position: absolute; top: 1em; right: 1em;
+}
+#divTemplate, #template-div{
+  position: absolute;
+  top: 50px;
+  right: 5px;
+}

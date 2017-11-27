@@ -1,27 +1,30 @@
-/***********************
- *	Project		: ArcGisWebDev
- *	Author		: Todd Mullen
- *	Document	: main.js
- *	Created		: Nov 15, 2017, 5:52:39 PM
- *	Description	:
- *      Controls
- ***********************/
-
+/*global require*/
+/*jshint laxcomma:true*/
 require([
-	"controllers/AppController"
-	,"services/MapServices"
-	,"dojo/domReady!"
-], function initApp( appCtrl, mapServices ){//on domReady, receives appcontroller as appCtrl
-	appCtrl.init({
-		elem: "divMap"
-		,mapOptions: {
-			basemap: "gray"
-			,center: [-118.241,34.0542]
-			,zoom: 12
-		}
-		,layers: mapServices.loadServices()
-	});
+	"esri/config",
+  'controllers/appcontroller',
+  'services/mapservices',
+  'dojo/domReady!'
+], function (
+	esriConfig
+	, appCtrl
+	, mapServices
+) {
+  console.debug('DEBUG - Starting application');
+
+//  esriConfig.defaults.io.proxyUrl = "/PHP/proxy.php";
+//  esriConfig.defaults.io.alwaysUseProxy = true;
+
+  appCtrl.init({
+//    elem: 'map-div',
+    elem: 'divMap',
+    mapOptions: {
+      basemap: 'gray',
+      center: [-118.241,34.0542],
+      zoom: 12
+    },
+    layers: mapServices.loadServices()
+  });
+
 });
-
-
 
