@@ -7,15 +7,13 @@ define([
   ,"utils/uris"
 ], function(FeatureLayer, SimpleRenderer, symbolUtil) {
 
-  var CENSUS_URL = 'http://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/CensusLaborDemo/FeatureServer/1'
-//    , REQUEST_URL = 'http://services1.arcgis.com/QKasy5M2L9TAQ7gs/arcgis/rest/services/Requests/FeatureServer/0';
-    , REQUEST_URL = "https://services8.arcgis.com/2DOAwaw9Q8PTaNsT/arcgis/rest/services/tjm_arcgis_web_dev/FeatureServer/0";
 
   function _loadServices(config) {
     var layers = []
     // census tract
-      , censusLayer = new FeatureLayer(CENSUS_URL, {
+	, censusLayer = new FeatureLayer( uris.censusLayer(), {
         id: 'Census'
+		,outFields: ["*"]//causes all fields to load
       })
       , requestLayer = new FeatureLayer( uris.requestLayer(), {
         id: 'Requests',
