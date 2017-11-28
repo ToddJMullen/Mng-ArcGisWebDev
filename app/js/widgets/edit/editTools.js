@@ -10,9 +10,10 @@ define([
   // dom stuff
   ,'dojo/dom-class'
   ,"dojo/on"
+  ,"esri/graphic"
   // template
   ,'text!widgets/edit/editTools.tpl.html'
-], function(declare, lang, array, _WidgetBase, _TemplatedMixin, domClass, on, template) {
+], function(declare, lang, array, _WidgetBase, _TemplatedMixin, domClass, on, Graphic, template) {
 
   return declare([_WidgetBase, _TemplatedMixin], {
 
@@ -66,7 +67,27 @@ define([
 
 	,_addPoint: function(e){
 		console.log("_addPoint()", e );
-		this._toggleEditButton();
+		var ptMap	= e.mapPoint
+		,ptCensus	= e.graphic
+		,attributes	= {
+			IssueType		: "New Request"
+			,RequestDate	:  new Date().getTime()
+			,CensusTract	: ptCensus.attributes.NAME
+		}
+		,graphic	= new Graphic( ptMap, null, attributes )
+		;
+
+		this.requestLayer
+			.applyEdits( [graphic] )
+			.then(
+				lang.hitch( this, function(){
+					this._toggleEditButton();
+					alert("Request Submitted");
+					console.log("Request submitted graphics:", graphic );
+				})
+		);
+
+
 	}
 
     ,// private functions
