@@ -70,12 +70,18 @@ define([
 		var ptMap	= e.mapPoint
 		,ptCensus	= e.graphic
 		,attributes	= {
-			IssueType		: "New Request"
-			,RequestDate	:  new Date().getTime()
-			,CensusTract	: ptCensus.attributes.NAME
+//			IssueType		: "New Request"
+//			,RequestDate	:  new Date().getTime()
+//			,CensusTract	: ptCensus.attributes.NAME
 		}
-		,graphic	= new Graphic( ptMap, null, attributes )
+		,graphic
+//		,graphic	= new Graphic( ptMap, null, attributes )
 		;
+		attributes.IssueType	= "New Request";
+		attributes.RequestDate	= new Date().getTime();
+		attributes.CensusTract	= ptCensus.attributes.NAME;
+
+		graphic = new Graphic( ptMap, null, attributes );
 
 		this.requestLayer
 			.applyEdits( [graphic] )
