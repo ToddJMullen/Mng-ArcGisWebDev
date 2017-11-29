@@ -76,20 +76,24 @@ define([
 		}
 		,graphic
 //		,graphic	= new Graphic( ptMap, null, attributes )
+		,description	= prompt("What's the haps here?")
 		;
 		attributes.IssueType	= "New Request";
 		attributes.RequestDate	= new Date().getTime();
 		attributes.CensusTract	= ptCensus.attributes.NAME;
+		attributes.Description	= description;
 
+		console.log("editTools::_addPoint() attributes:", attributes );
 		graphic = new Graphic( ptMap, null, attributes );
 
+		console.log("editTools::_addPoint() submitting graphic:", graphic );
 		this.requestLayer
 			.applyEdits( [graphic] )
 			.then(
-				lang.hitch( this, function(){
+				lang.hitch( this, function( rsp ){
 					this._toggleEditButton();
 					alert("Request Submitted");
-					console.log("Request submitted graphics:", graphic );
+					console.log("Request submitted response:", rsp );
 				})
 		);
 
