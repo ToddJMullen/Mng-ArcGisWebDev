@@ -13,11 +13,12 @@ define([
   ,"dojo/query"
   ,"dojo/on"
   ,"esri/graphic"
-  // template
+  //custom stuff
   ,'text!widgets/edit/editTools.tpl.html'
-  //custom service
   ,"widgets/edit/editService"
-], function(declare, lang, array, _WidgetBase, _TemplatedMixin, domClass, domAttr, query, on, Graphic, template, EditService ) {
+  ,"utils/symbolUtil"
+], function(declare, lang, array, _WidgetBase, _TemplatedMixin
+			, domClass, domAttr, query, on, Graphic, template, EditService, symbolUtil ) {
 
   return declare([_WidgetBase, _TemplatedMixin], {
 
@@ -110,7 +111,7 @@ define([
 			,description	: prompt("What's the haps here?")
 		}
 //		,graphic
-		,graphic	= new Graphic( ptMap, null, attributes )
+		,graphic	= new Graphic( ptMap, symbolUtil.simpleMarker(), attributes )
 //		,description	= prompt("What's the haps here?")
 		;
 //		attributes.IssueType	= "New Request";
