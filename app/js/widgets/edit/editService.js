@@ -18,8 +18,9 @@ define([
 ], function( declare, lang, Deferred, dojoJson, Graphic ){
 	return declare( null, {
 		layer: null
-		,hasLocal: false
+		,hasSavedRequests: false
 		,constructor: function(options){
+			console.log("EditService(), Options: ", options );
 			this.options	= options || {};
 			this.layer		= options.layer;
 			this._syncAry		= [];//holds failed request logs
@@ -27,14 +28,16 @@ define([
 		}
 		//run a check to see if local storage has any stored requests
 		,check: function(){
+			console.log("EditService::check()");
 			for (var name in localStorage) {
 				if( name.indexOf("request") > -1 ){
-					this.hasLocal = true;
+					this.hasSavedRequests = true;
 				}
 			}
 		}
 		//make any outstanding requests in local storage
 		,sync: function(){
+			console.log("EditService::sync()");
 			//assemble an array of requests stored locally
 			var keys = [];
 			for (var key in localStorage) {
@@ -47,6 +50,7 @@ define([
 			}
 			//if there are requests, apply them to the current map layer
 			if( this._syncAry.length > 0 ){
+				console.log("EditService::sync() has elements:", this._syncAry );
 				this.layer
 					.applyEdits(this._syncAry)
 					.then(//remove the local storage requests & reset the flags
@@ -66,16 +70,19 @@ define([
 			}
 		}//sync
 		,add: function(adds){
+			console.log("EditService::add()", adds );
 			var deferred = new Deferred()
 			,req
 			;
-			req = this.layer.applyEdits( this._syncAry );
+			req = this.layer.applyEdits( adds );
 			req.then(
 				function onAddSuccess(){
+					console.log("EditService::add.onAddSuccess()", adds );
 					deferred.resolve();
 				}
 				,lang.hitch( this, function onAddFailed(){
-					for ( i = 0, item; (item = adds[i]); i++ ){
+					console.log("EditService::add.onAddFailed()", adds );
+					for ( var i = 0, item; (item = adds[i]); i++ ){
 						try{
 							var id = Math.floor(1+ Math.random() * 1000)
 							,key = "request-" + id
