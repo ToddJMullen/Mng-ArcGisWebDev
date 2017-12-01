@@ -15,7 +15,9 @@ define([
   ,"esri/graphic"
   // template
   ,'text!widgets/edit/editTools.tpl.html'
-], function(declare, lang, array, _WidgetBase, _TemplatedMixin, domClass, domAttr, query, on, Graphic, template) {
+  //custom service
+  ,"widgets/edit/editService"
+], function(declare, lang, array, _WidgetBase, _TemplatedMixin, domClass, domAttr, query, on, Graphic, template, EditService ) {
 
   return declare([_WidgetBase, _TemplatedMixin], {
 
@@ -27,6 +29,7 @@ define([
 	,handler: null
 	,requestLayer: null
 	,requestType: null
+	,editService: null
 //	,domNode: null
 
 
@@ -36,7 +39,10 @@ define([
       this.options = options || {};
       this.map = this.options.map;
       this.requestLayer = this.map.getLayer('Requests');
-	  console.log("editTools::constructor(), this.map:", this.map );
+	  this.editService = new EditService({
+		  layer: this.requestLayer
+	  });
+	  console.log("EditTools(), this.map:", this.map );
     }
 
 	,postCreate: function(){
@@ -47,6 +53,11 @@ define([
 				this.domNode//I don't know if this is built-in or if its definition is part of the truncated code
 				,".btn-edit:click"
 				,lang.hitch( this, "_toggleEditButton" )
+			)
+			,on(
+				this.domNode
+				,".btn-sync:click"
+				,lang.hitch( this, "_syncLocal" )
 			)
 		);
 //		I disabled this binding because I think it is bound in the template & again here
@@ -72,6 +83,16 @@ define([
     // public methods
 
     // widget methods
+	,_syncLocal: function(){
+		console.log("EditTools::_syncLocal()");
+		if( this.editService.hasSavedRequests ){
+			this.editService.sync();
+		} else {
+			console.log("EditTools::_syncLocal(), EditService does not have saved requests");
+		}
+	}
+
+
     ,_addRequest: function(e) {
 		console.log("_addRequest()", e );
 //		console.debug('editTools#_addRequest: start or stop adding a request.');
@@ -101,18 +122,20 @@ define([
 //		graphic = new Graphic( ptMap, null, attributes );
 
 		console.log("editTools::_addPoint() submitting graphic:", graphic );
-		this.requestLayer
-			.applyEdits( [graphic] )
-			.then(
-				lang.hitch( this, function( rsp ){
-					this._toggleEditButton();
-					alert("Request Submitted");
-					console.log("Request submitted response:", rsp );
-				})
-		);
-
-
-	}
+		this.editService.add( [graphic] );
+		this._toggleEditButton();
+		alert("Request Submitted");
+		return;
+//		this.requestLayer
+//			.applyEdits( [graphic] )
+//			.then(
+//				lang.hitch( this, function( rsp ){
+//					this._toggleEditButton();
+//					alert("Request Submitted");
+//					console.log("Request submitted response:", rsp );
+//				})
+//		);
+	}//_addPoint()
 
     ,_init: function() {
 		console.log("_init()");
