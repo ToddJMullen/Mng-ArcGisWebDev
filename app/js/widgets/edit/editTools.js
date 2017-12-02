@@ -123,9 +123,20 @@ define([
 //		graphic = new Graphic( ptMap, null, attributes );
 
 		console.log("editTools::_addPoint() submitting graphic:", graphic );
-		this.editService.add( [graphic] );
-		this._toggleEditButton();
-		alert("Request Submitted");
+
+		this.map.graphics.add( [graphic] );
+		this.editService.add( [graphic] )
+			.then(
+				lang.hitch( this, function wasAdded(){
+					this._toggleEditButton();
+					alert("Request Submitted");
+				})
+				,lang.hitch( this, function wasStoredLocally(){
+					this._toggleEditButton();
+					alert("Request Was Saved for Adding Later"
+							+ "\nUse the sync button when you have a network connection.");
+				})
+			);
 		return;
 //		this.requestLayer
 //			.applyEdits( [graphic] )
